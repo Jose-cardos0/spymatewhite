@@ -1,9 +1,18 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en-US">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FutureSync - Relatórios de Tendências 2025</title>
+    <title>Data Scan - 2025 Trends Reports</title>
+    <meta
+      name="description"
+      content="Discover the trends that will revolutionize 2025 with our exclusive reports and deep analysis"
+    />
+    <meta
+      name="keywords"
+      content="2025 trends, reports, insights, analysis, future of business"
+    />
+    <meta property="og:image" content=" https://i.ibb.co/hFLSrZRQ/data.png" />
 
     <!-- Fonts -->
     <link
@@ -14,8 +23,25 @@
     <!-- Libraries -->
     <script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
-    <script src="https://unpkg.com/marquee3000@2.0.0/dist/marquee3000.min.js"></script>
+
+    <!-- Google Translate -->
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          {
+            pageLanguage: "en",
+            includedLanguages: "pt,es,fr,de,it,ja,zh,ar,ru,hi,ko",
+            autoDisplay: false,
+            layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+          },
+          "google_translate_element"
+        );
+      }
+    </script>
+    <script
+      type="text/javascript"
+      src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+    ></script>
 
     <style>
       * {
@@ -26,14 +52,69 @@
 
       body {
         font-family: "Inter", sans-serif;
+        background: #0a0a0a; /* Fallback sólido para iOS */
+        background: -webkit-linear-gradient(
+          135deg,
+          #0a0a0a 0%,
+          #1a1a2e 50%,
+          #16213e 100%
+        );
+        background: -moz-linear-gradient(
+          135deg,
+          #0a0a0a 0%,
+          #1a1a2e 50%,
+          #16213e 100%
+        );
         background: linear-gradient(
           135deg,
           #0a0a0a 0%,
           #1a1a2e 50%,
           #16213e 100%
         );
+        background-attachment: scroll; /* iOS não suporta fixed */
+        background-repeat: no-repeat;
+        background-size: cover;
         color: white;
         overflow-x: hidden;
+        min-height: 100vh;
+        min-height: -webkit-fill-available; /* iOS Safari fix */
+        position: relative;
+      }
+
+      /* iOS Safari specific fixes */
+      @supports (-webkit-appearance: none) {
+        body {
+          background-attachment: scroll !important;
+          min-height: -webkit-fill-available;
+        }
+      }
+
+      /* Fallback para dispositivos que não suportam backdrop-filter */
+      @supports not (backdrop-filter: blur(10px)) {
+        header {
+          background: rgba(0, 0, 0, 0.95) !important;
+        }
+
+        .marquee-container {
+          background: linear-gradient(
+            45deg,
+            #ff006e,
+            #8338ec,
+            #3a86ff
+          ) !important;
+        }
+
+        .feature-card {
+          background: rgba(26, 26, 46, 0.8) !important;
+        }
+
+        .pricing-card {
+          background: rgba(26, 26, 46, 0.8) !important;
+        }
+
+        #google_translate_element {
+          background: rgba(0, 0, 0, 0.95) !important;
+        }
       }
 
       /* Three.js Background */
@@ -43,7 +124,9 @@
         left: 0;
         width: 100%;
         height: 100%;
+        height: -webkit-fill-available; /* iOS fix */
         z-index: -2;
+        background: #0a0a0a; /* Fallback */
       }
 
       /* Particles Background */
@@ -51,9 +134,11 @@
         position: fixed;
         width: 100%;
         height: 100%;
+        height: -webkit-fill-available; /* iOS fix */
         top: 0;
         left: 0;
         z-index: -1;
+        background: transparent;
       }
 
       /* Marquee Styles - Redesigned */
@@ -77,7 +162,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: linear-gradient(45deg, #ff006e, #8338ec, #3a86ff, #ff006e);
+        background: linear-gradient(45deg, #ff006e, #8338ec, #3a86ff);
         background-size: 400% 400%;
         animation: gradientShift 4s ease infinite;
         animation-delay: 0s;
@@ -199,16 +284,22 @@
         font-size: 36px;
       }
 
-      /* Header */
+      /* Header com melhor suporte iOS */
       header {
         position: fixed;
         top: 0;
         width: 100%;
         background: rgba(0, 0, 0, 0.9);
+        -webkit-backdrop-filter: blur(10px);
         backdrop-filter: blur(10px);
         z-index: 1000;
         padding: 20px 0;
         transition: all 0.3s ease;
+        /* Fallback para iOS antigo */
+        background: -webkit-linear-gradient(
+          rgba(0, 0, 0, 0.9),
+          rgba(0, 0, 0, 0.9)
+        );
       }
 
       .nav-container {
@@ -258,9 +349,10 @@
         width: 100%;
       }
 
-      /* Hero Section */
+      /* Hero Section com altura corrigida para iOS */
       .hero {
         min-height: 100vh;
+        min-height: -webkit-fill-available; /* iOS Safari fix */
         display: flex;
         align-items: center;
         justify-content: center;
@@ -476,6 +568,7 @@
 
       .feature-card {
         background: rgba(255, 255, 255, 0.05);
+        -webkit-backdrop-filter: blur(10px);
         backdrop-filter: blur(10px);
         border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 20px;
@@ -484,6 +577,11 @@
         transition: all 0.3s ease;
         position: relative;
         overflow: hidden;
+        /* Fallback para iOS */
+        background: -webkit-linear-gradient(
+          rgba(26, 26, 46, 0.3),
+          rgba(26, 26, 46, 0.3)
+        );
       }
 
       .feature-card::before {
@@ -528,8 +626,10 @@
       /* Pricing Section */
       .pricing {
         padding: 100px 20px;
-
+        -webkit-backdrop-filter: blur(10px);
         backdrop-filter: blur(10px);
+        /* Fallback para iOS */
+        background: rgba(0, 0, 0, 0.2);
       }
 
       .pricing-container {
@@ -555,6 +655,7 @@
 
       .pricing-card {
         background: rgba(255, 255, 255, 0.05);
+        -webkit-backdrop-filter: blur(10px);
         backdrop-filter: blur(10px);
         border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 20px;
@@ -562,6 +663,11 @@
         text-align: center;
         position: relative;
         transition: all 0.3s ease;
+        /* Fallback para iOS */
+        background: -webkit-linear-gradient(
+          rgba(26, 26, 46, 0.3),
+          rgba(26, 26, 46, 0.3)
+        );
       }
 
       .pricing-card.featured {
@@ -617,11 +723,16 @@
         box-shadow: 0 10px 20px rgba(255, 0, 110, 0.3);
       }
 
-      /* Footer */
+      /* Footer com fallback */
       footer {
         background: rgba(0, 0, 0, 0.8);
         padding: 60px 20px 20px;
         text-align: center;
+        /* Fallback para iOS */
+        background: -webkit-linear-gradient(
+          rgba(0, 0, 0, 0.8),
+          rgba(0, 0, 0, 0.8)
+        );
       }
 
       .footer-content {
@@ -639,8 +750,18 @@
         background-clip: text;
       }
 
-      /* Responsive */
+      /* Responsive específico para iOS */
       @media (max-width: 768px) {
+        body {
+          min-height: -webkit-fill-available;
+          background-attachment: scroll;
+        }
+
+        .hero {
+          min-height: -webkit-fill-available;
+          padding-top: 120px; /* Compensar header no iOS */
+        }
+
         .hero-content {
           flex-direction: column;
           gap: 40px;
@@ -722,6 +843,34 @@
         .marquee-container.style-4 .marquee {
           font-size: 28px;
         }
+
+        /* iOS específico */
+        #google_translate_element {
+          top: 80px;
+          right: 10px;
+          padding: 8px 12px;
+        }
+
+        #google_translate_element select {
+          font-size: 12px;
+        }
+      }
+
+      /* Detectar iOS e aplicar correções específicas */
+      @supports (-webkit-touch-callout: none) {
+        body {
+          background-attachment: scroll !important;
+          min-height: -webkit-fill-available !important;
+        }
+
+        .hero {
+          min-height: -webkit-fill-available !important;
+        }
+
+        #three-bg,
+        #particles-js {
+          height: -webkit-fill-available !important;
+        }
       }
 
       /* Scroll Animations */
@@ -735,6 +884,53 @@
         opacity: 1;
         transform: translateY(0);
       }
+
+      /* Google Translate Styling */
+      #google_translate_element {
+        position: fixed;
+        top: 100px;
+        right: 20px;
+        z-index: 9999;
+        background: rgba(0, 0, 0, 0.8);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        padding: 10px 15px;
+        border-radius: 25px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      }
+
+      #google_translate_element select {
+        background: transparent;
+        color: white;
+        border: none;
+        outline: none;
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      #google_translate_element option {
+        background: #1a1a2e;
+        color: white;
+      }
+
+      /* Hide Google Translate banner */
+      .goog-te-banner-frame.skiptranslate {
+        display: none !important;
+      }
+
+      body {
+        top: 0px !important;
+      }
+
+      .goog-te-balloon-frame {
+        display: none !important;
+      }
+
+      .goog-te-ftab {
+        display: none !important;
+      }
     </style>
   </head>
   <body>
@@ -747,42 +943,44 @@
     <!-- Header -->
     <header>
       <div class="nav-container">
-        <div class="logo">FutureSync</div>
+        <div class="logo">Data Scan</div>
         <nav>
           <ul class="nav-menu">
-            <li><a href="#home">Início</a></li>
-            <li><a href="#features">Recursos</a></li>
-            <li><a href="#pricing">Preços</a></li>
-            <li><a href="#contact">Contato</a></li>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#contact">Contact</a></li>
           </ul>
         </nav>
       </div>
     </header>
 
+    <!-- Google Translate Widget -->
+    <div id="google_translate_element"></div>
+
     <!-- Marquee 1 -->
     <div class="marquee-container marquer1">
       <div class="marquee fast">
         <span class="marquee-text"
-          >🚀 TENDÊNCIAS 2025 • RELATÓRIOS EXCLUSIVOS • INSIGHTS INOVADORES •
-          ACESSO IMEDIATO • PREÇOS ÚNICOS • TRANSFORME SEU NEGÓCIO • REVOLUCIONE
-          SUA ESTRATÉGIA • DADOS EM TEMPO REAL • ANÁLISES PROFUNDAS • FUTURO DOS
-          NEGÓCIOS • INOVAÇÃO TECNOLÓGICA • ESTRATÉGIAS VENCEDORAS • CRESCIMENTO
-          EXPONENCIAL • LIDERANÇA DE MERCADO • VISÃO ESTRATÉGICA • ANÁLISES
-          AVANÇADAS • TRANSFORMAÇÃO DIGITAL • INSIGHTS PODEROSOS • RESULTADOS
-          EXTRAORDINÁRIOS • SUCESSO GARANTIDO • 🚀 TENDÊNCIAS 2025 • RELATÓRIOS
-          EXCLUSIVOS • INSIGHTS INOVADORES • ACESSO IMEDIATO • PREÇOS ÚNICOS •
-          TRANSFORME SEU NEGÓCIO • REVOLUCIONE SUA ESTRATÉGIA • DADOS EM TEMPO
-          REAL • ANÁLISES PROFUNDAS • FUTURO DOS NEGÓCIOS • INOVAÇÃO TECNOLÓGICA
-          • ESTRATÉGIAS VENCEDORAS • CRESCIMENTO EXPONENCIAL • LIDERANÇA DE
-          MERCADO • VISÃO ESTRATÉGICA • ANÁLISES AVANÇADAS • TRANSFORMAÇÃO
-          DIGITAL • INSIGHTS PODEROSOS • RESULTADOS EXTRAORDINÁRIOS • SUCESSO
-          GARANTIDO • 🚀 TENDÊNCIAS 2025 • RELATÓRIOS EXCLUSIVOS • INSIGHTS
-          INOVADORES • ACESSO IMEDIATO • PREÇOS ÚNICOS • TRANSFORME SEU NEGÓCIO
-          • REVOLUCIONE SUA ESTRATÉGIA • DADOS EM TEMPO REAL • ANÁLISES
-          PROFUNDAS • FUTURO DOS NEGÓCIOS • INOVAÇÃO TECNOLÓGICA • ESTRATÉGIAS
-          VENCEDORAS • CRESCIMENTO EXPONENCIAL • LIDERANÇA DE MERCADO • VISÃO
-          ESTRATÉGICA • ANÁLISES AVANÇADAS • TRANSFORMAÇÃO DIGITAL • INSIGHTS
-          PODEROSOS • RESULTADOS EXTRAORDINÁRIOS • SUCESSO GARANTIDO •</span
+          >🚀 2025 TRENDS • EXCLUSIVE REPORTS • INNOVATIVE INSIGHTS • IMMEDIATE
+          ACCESS • UNIQUE PRICES • TRANSFORM YOUR BUSINESS • REVOLUTIONIZE YOUR
+          STRATEGY • REAL-TIME DATA • DEEP ANALYSIS • FUTURE OF BUSINESS •
+          TECHNOLOGICAL INNOVATION • WINNING STRATEGIES • EXPONENTIAL GROWTH •
+          MARKET LEADERSHIP • STRATEGIC VISION • ADVANCED ANALYTICS • DIGITAL
+          TRANSFORMATION • POWERFUL INSIGHTS • EXTRAORDINARY RESULTS •
+          GUARANTEED SUCCESS • 🚀 2025 TRENDS • EXCLUSIVE REPORTS • INNOVATIVE
+          INSIGHTS • IMMEDIATE ACCESS • UNIQUE PRICES • TRANSFORM YOUR BUSINESS
+          • REVOLUTIONIZE YOUR STRATEGY • REAL-TIME DATA • DEEP ANALYSIS •
+          FUTURE OF BUSINESS • TECHNOLOGICAL INNOVATION • WINNING STRATEGIES •
+          EXPONENTIAL GROWTH • MARKET LEADERSHIP • STRATEGIC VISION • ADVANCED
+          ANALYTICS • DIGITAL TRANSFORMATION • POWERFUL INSIGHTS • EXTRAORDINARY
+          RESULTS • GUARANTEED SUCCESS • 🚀 2025 TRENDS • EXCLUSIVE REPORTS •
+          INNOVATIVE INSIGHTS • IMMEDIATE ACCESS • UNIQUE PRICES • TRANSFORM
+          YOUR BUSINESS • REVOLUTIONIZE YOUR STRATEGY • REAL-TIME DATA • DEEP
+          ANALYSIS • FUTURE OF BUSINESS • TECHNOLOGICAL INNOVATION • WINNING
+          STRATEGIES • EXPONENTIAL GROWTH • MARKET LEADERSHIP • STRATEGIC VISION
+          • ADVANCED ANALYTICS • DIGITAL TRANSFORMATION • POWERFUL INSIGHTS •
+          EXTRAORDINARY RESULTS • GUARANTEED SUCCESS •</span
         >
       </div>
     </div>
@@ -795,21 +993,21 @@
 
       <div class="hero-content">
         <div class="hero-text">
-          <h1>O Futuro dos Negócios Começa Aqui</h1>
+          <h1>The Future of Business Starts Here</h1>
           <p>
-            Descubra as tendências que vão revolucionar 2025 com nossos
-            relatórios exclusivos e análises profundas
+            Discover the trends that will revolutionize 2025 with our exclusive
+            reports and deep analysis
           </p>
         </div>
         <div class="hero-image">
           <div class="alien-container">
             <div class="alien-glow"></div>
             <img
-              src="assets/alien.png"
-              alt="Alien Futurista"
+              src="https://i.ibb.co/GQsG5Vvx/alien.png"
+              alt="Futuristic Alien"
               class="alien-img"
             />
-            <a href="#pricing" class="cta-button">Comece Agora</a>
+            <a href="#pricing" class="cta-button">Get Started Now</a>
           </div>
         </div>
       </div>
@@ -819,79 +1017,78 @@
     <div class="marquee-container style-2">
       <div class="marquee">
         <span class="marquee-text"
-          >✨ MAIS DE 500 EMPRESAS CONFIAM • IA TOOLS • COMPORTAMENTO DO USUÁRIO
-          • INOVAÇÕES • FERRAMENTAS EXCLUSIVAS • TRANSFORMAÇÃO DIGITAL •
-          INSIGHTS PODEROSOS • ESTRATÉGIAS VENCEDORAS • TECNOLOGIA AVANÇADA •
-          CRESCIMENTO EXPONENCIAL • EXPERTISE PROFISSIONAL • SOLUÇÕES
-          INTELIGENTES • ANÁLISES COMPORTAMENTAIS • PREVISÕES DE MERCADO • DADOS
-          ESTRATÉGICOS • AUTOMAÇÃO AVANÇADA • INTELIGÊNCIA ARTIFICIAL • MACHINE
-          LEARNING • BIG DATA • ANALYTICS • PERFORMANCE • OTIMIZAÇÃO •
-          EFICIÊNCIA • PRODUTIVIDADE • ✨ MAIS DE 500 EMPRESAS CONFIAM • IA
-          TOOLS • COMPORTAMENTO DO USUÁRIO • INOVAÇÕES • FERRAMENTAS EXCLUSIVAS
-          • TRANSFORMAÇÃO DIGITAL • INSIGHTS PODEROSOS • ESTRATÉGIAS VENCEDORAS
-          • TECNOLOGIA AVANÇADA • CRESCIMENTO EXPONENCIAL • EXPERTISE
-          PROFISSIONAL • SOLUÇÕES INTELIGENTES • ANÁLISES COMPORTAMENTAIS •
-          PREVISÕES DE MERCADO • DADOS ESTRATÉGICOS • AUTOMAÇÃO AVANÇADA •
-          INTELIGÊNCIA ARTIFICIAL • MACHINE LEARNING • BIG DATA • ANALYTICS •
-          PERFORMANCE • OTIMIZAÇÃO • EFICIÊNCIA • PRODUTIVIDADE • ✨ MAIS DE 500
-          EMPRESAS CONFIAM • IA TOOLS • COMPORTAMENTO DO USUÁRIO • INOVAÇÕES •
-          FERRAMENTAS EXCLUSIVAS • TRANSFORMAÇÃO DIGITAL • INSIGHTS PODEROSOS •
-          ESTRATÉGIAS VENCEDORAS • TECNOLOGIA AVANÇADA • CRESCIMENTO EXPONENCIAL
-          • EXPERTISE PROFISSIONAL • SOLUÇÕES INTELIGENTES • ANÁLISES
-          COMPORTAMENTAIS • PREVISÕES DE MERCADO •</span
+          >✨ OVER 500 COMPANIES TRUST US • AI TOOLS • USER BEHAVIOR •
+          INNOVATIONS • EXCLUSIVE TOOLS • DIGITAL TRANSFORMATION • POWERFUL
+          INSIGHTS • WINNING STRATEGIES • ADVANCED TECHNOLOGY • EXPONENTIAL
+          GROWTH • PROFESSIONAL EXPERTISE • INTELLIGENT SOLUTIONS • BEHAVIORAL
+          ANALYSIS • MARKET PREDICTIONS • STRATEGIC DATA • ADVANCED AUTOMATION •
+          ARTIFICIAL INTELLIGENCE • MACHINE LEARNING • BIG DATA • ANALYTICS •
+          PERFORMANCE • OPTIMIZATION • EFFICIENCY • PRODUCTIVITY • ✨ OVER 500
+          COMPANIES TRUST US • AI TOOLS • USER BEHAVIOR • INNOVATIONS •
+          EXCLUSIVE TOOLS • DIGITAL TRANSFORMATION • POWERFUL INSIGHTS • WINNING
+          STRATEGIES • ADVANCED TECHNOLOGY • EXPONENTIAL GROWTH • PROFESSIONAL
+          EXPERTISE • INTELLIGENT SOLUTIONS • BEHAVIORAL ANALYSIS • MARKET
+          PREDICTIONS • STRATEGIC DATA • ADVANCED AUTOMATION • ARTIFICIAL
+          INTELLIGENCE • MACHINE LEARNING • BIG DATA • ANALYTICS • PERFORMANCE •
+          OPTIMIZATION • EFFICIENCY • PRODUCTIVITY • ✨ OVER 500 COMPANIES TRUST
+          US • AI TOOLS • USER BEHAVIOR • INNOVATIONS • EXCLUSIVE TOOLS •
+          DIGITAL TRANSFORMATION • POWERFUL INSIGHTS • WINNING STRATEGIES •
+          ADVANCED TECHNOLOGY • EXPONENTIAL GROWTH • PROFESSIONAL EXPERTISE •
+          INTELLIGENT SOLUTIONS • BEHAVIORAL ANALYSIS • MARKET PREDICTIONS
+          •</span
         >
       </div>
     </div>
 
     <!-- Features Section -->
     <section class="features" id="features">
-      <h2 class="fade-in-up">Por Que Escolher o FutureSync?</h2>
+      <h2 class="fade-in-up">Why Choose FutureSync?</h2>
       <div class="features-grid">
         <div class="feature-card fade-in-up">
           <div class="feature-icon">🚀</div>
-          <h3>Relatórios Inovadores</h3>
+          <h3>Innovative Reports</h3>
           <p>
-            Análises profundas das principais tendências que moldarão o futuro
-            dos negócios em 2025 e além.
+            Deep analysis of the main trends that will shape the future of
+            business in 2025 and beyond.
           </p>
         </div>
         <div class="feature-card fade-in-up">
           <div class="feature-icon">🧠</div>
-          <h3>Inteligência Artificial</h3>
+          <h3>Artificial Intelligence</h3>
           <p>
-            Insights baseados em IA para identificar oportunidades e antecipar
-            mudanças no mercado.
+            AI-based insights to identify opportunities and anticipate market
+            changes.
           </p>
         </div>
         <div class="feature-card fade-in-up">
           <div class="feature-icon">📊</div>
-          <h3>Dados em Tempo Real</h3>
+          <h3>Real-Time Data</h3>
           <p>
-            Informações sempre atualizadas para manter sua empresa na vanguarda
-            da inovação.
+            Always updated information to keep your company at the forefront of
+            innovation.
           </p>
         </div>
         <div class="feature-card fade-in-up">
           <div class="feature-icon">🎯</div>
-          <h3>Estratégias Personalizadas</h3>
+          <h3>Personalized Strategies</h3>
           <p>
-            Recommendations adaptadas ao seu setor e modelo de negócios para
-            máximo impacto.
+            Recommendations adapted to your sector and business model for
+            maximum impact.
           </p>
         </div>
         <div class="feature-card fade-in-up">
           <div class="feature-icon">🌐</div>
-          <h3>Visão Global</h3>
+          <h3>Global Vision</h3>
           <p>
-            Perspectivas internacionais para expandir sua visão além das
-            fronteiras locais.
+            International perspectives to expand your vision beyond local
+            borders.
           </p>
         </div>
         <div class="feature-card fade-in-up">
           <div class="feature-icon">⚡</div>
-          <h3>Acesso Instantâneo</h3>
+          <h3>Instant Access</h3>
           <p>
-            Receba todos os relatórios imediatamente após a compra, sem esperas.
+            Receive all reports immediately after purchase, without waiting.
           </p>
         </div>
       </div>
@@ -901,25 +1098,24 @@
     <div class="marquee-container style-3">
       <div class="marquee ultra-slow">
         <span class="marquee-text"
-          >💎 PLANOS EXCLUSIVOS • PAGAMENTO ÚNICO • SEM MENSALIDADES • ACESSO
-          VITALÍCIO • GARANTIA DE QUALIDADE • SUPORTE ESPECIALIZADO • RESULTADOS
-          COMPROVADOS • LIDERANÇA DE MERCADO • EXPERTISE PROFISSIONAL • ANÁLISES
-          DETALHADAS • CONSULTORIA PERSONALIZADA • ESTRATÉGIAS CUSTOMIZADAS •
-          IMPLEMENTAÇÃO COMPLETA • ACOMPANHAMENTO CONTÍNUO • SUPORTE 24/7 •
-          TREINAMENTO ESPECIALIZADO • CERTIFICAÇÕES • BENCHMARKING • MELHORES
-          PRÁTICAS • CASES DE SUCESSO • ROI COMPROVADO • EFICÁCIA GARANTIDA •
-          QUALIDADE PREMIUM • EXCELÊNCIA OPERACIONAL • 💎 PLANOS EXCLUSIVOS •
-          PAGAMENTO ÚNICO • SEM MENSALIDADES • ACESSO VITALÍCIO • GARANTIA DE
-          QUALIDADE • SUPORTE ESPECIALIZADO • RESULTADOS COMPROVADOS • LIDERANÇA
-          DE MERCADO • EXPERTISE PROFISSIONAL • ANÁLISES DETALHADAS •
-          CONSULTORIA PERSONALIZADA • ESTRATÉGIAS CUSTOMIZADAS • IMPLEMENTAÇÃO
-          COMPLETA • ACOMPANHAMENTO CONTÍNUO • SUPORTE 24/7 • TREINAMENTO
-          ESPECIALIZADO • CERTIFICAÇÕES • BENCHMARKING • MELHORES PRÁTICAS •
-          CASES DE SUCESSO • ROI COMPROVADO • EFICÁCIA GARANTIDA • QUALIDADE
-          PREMIUM • EXCELÊNCIA OPERACIONAL • 💎 PLANOS EXCLUSIVOS • PAGAMENTO
-          ÚNICO • SEM MENSALIDADES • ACESSO VITALÍCIO • GARANTIA DE QUALIDADE •
-          SUPORTE ESPECIALIZADO • RESULTADOS COMPROVADOS • LIDERANÇA DE MERCADO
-          • EXPERTISE PROFISSIONAL • ANÁLISES DETALHADAS •</span
+          >💎 EXCLUSIVE PLANS • ONE-TIME PAYMENT • NO MONTHLY FEES • LIFETIME
+          ACCESS • QUALITY GUARANTEE • SPECIALIZED SUPPORT • PROVEN RESULTS •
+          MARKET LEADERSHIP • PROFESSIONAL EXPERTISE • DETAILED ANALYSIS •
+          PERSONALIZED CONSULTING • CUSTOMIZED STRATEGIES • COMPLETE
+          IMPLEMENTATION • CONTINUOUS MONITORING • 24/7 SUPPORT • SPECIALIZED
+          TRAINING • CERTIFICATIONS • BENCHMARKING • BEST PRACTICES • SUCCESS
+          CASES • PROVEN ROI • GUARANTEED EFFECTIVENESS • PREMIUM QUALITY •
+          OPERATIONAL EXCELLENCE • 💎 EXCLUSIVE PLANS • ONE-TIME PAYMENT • NO
+          MONTHLY FEES • LIFETIME ACCESS • QUALITY GUARANTEE • SPECIALIZED
+          SUPPORT • PROVEN RESULTS • MARKET LEADERSHIP • PROFESSIONAL EXPERTISE
+          • DETAILED ANALYSIS • PERSONALIZED CONSULTING • CUSTOMIZED STRATEGIES
+          • COMPLETE IMPLEMENTATION • CONTINUOUS MONITORING • 24/7 SUPPORT •
+          SPECIALIZED TRAINING • CERTIFICATIONS • BENCHMARKING • BEST PRACTICES
+          • SUCCESS CASES • PROVEN ROI • GUARANTEED EFFECTIVENESS • PREMIUM
+          QUALITY • OPERATIONAL EXCELLENCE • 💎 EXCLUSIVE PLANS • ONE-TIME
+          PAYMENT • NO MONTHLY FEES • LIFETIME ACCESS • QUALITY GUARANTEE •
+          SPECIALIZED SUPPORT • PROVEN RESULTS • MARKET LEADERSHIP •
+          PROFESSIONAL EXPERTISE • DETAILED ANALYSIS •</span
         >
       </div>
     </div>
@@ -927,42 +1123,42 @@
     <!-- Pricing Section -->
     <section class="pricing" id="pricing">
       <div class="pricing-container">
-        <h2 class="fade-in-up">Escolha Seu Plano</h2>
+        <h2 class="fade-in-up">Choose Your Plan</h2>
         <div class="pricing-grid">
           <div class="pricing-card fade-in-up">
             <h3 class="plan-name">Starter Spark</h3>
-            <div class="plan-price">R$49</div>
+            <div class="plan-price">$49</div>
             <ul class="plan-features">
-              <li>Acesso a relatórios básicos</li>
-              <li>Ideal para pequenos negócios</li>
-              <li>Insights sobre tendências principais</li>
-              <li>Suporte por email</li>
+              <li>Access to basic reports</li>
+              <li>Ideal for small businesses</li>
+              <li>Insights on key trends</li>
+              <li>Email support</li>
             </ul>
-            <button class="plan-button">Começar Agora</button>
+            <button class="plan-button">Get Started</button>
           </div>
 
           <div class="pricing-card featured fade-in-up">
             <h3 class="plan-name">Growth Ignite</h3>
-            <div class="plan-price">R$99</div>
+            <div class="plan-price">$99</div>
             <ul class="plan-features">
-              <li>Todos os recursos do Starter</li>
-              <li>Relatórios avançados completos</li>
-              <li>Análises comportamentais</li>
-              <li>Previsões de mercado</li>
-              <li>Suporte prioritário</li>
+              <li>All Starter features</li>
+              <li>Complete advanced reports</li>
+              <li>Behavioral analysis</li>
+              <li>Market predictions</li>
+              <li>Priority support</li>
             </ul>
-            <button class="plan-button">Mais Popular</button>
+            <button class="plan-button">Most Popular</button>
           </div>
 
           <div class="pricing-card fade-in-up">
             <h3 class="plan-name">Elite Visionary</h3>
-            <div class="plan-price">R$149</div>
+            <div class="plan-price">$149</div>
             <ul class="plan-features">
-              <li>Acesso completo a todos os relatórios</li>
-              <li>Consultorias personalizadas</li>
-              <li>Análises exclusivas</li>
-              <li>Sessões de estratégia</li>
-              <li>Suporte 24/7</li>
+              <li>Complete access to all reports</li>
+              <li>Personalized consulting</li>
+              <li>Exclusive analysis</li>
+              <li>Strategy sessions</li>
+              <li>24/7 support</li>
             </ul>
             <button class="plan-button">Premium</button>
           </div>
@@ -974,27 +1170,27 @@
     <div class="marquee-container style-4">
       <div class="marquee slow">
         <span class="marquee-text"
-          >🎉 REVOLUCIONE SEU NEGÓCIO • TRANSFORME DADOS EM INSIGHTS • LIDERE O
-          FUTURO • SEJA VISIONÁRIO • TECNOLOGIA AVANÇADA • CRESCIMENTO
-          EXPONENCIAL • SUCESSO GARANTIDO • INOVAÇÃO CONSTANTE • ESTRATÉGIAS
-          INTELIGENTES • RESULTADOS EXTRAORDINÁRIOS • COMPETITIVIDADE •
-          DIFERENCIAÇÃO • POSICIONAMENTO • MARKET SHARE • LUCRATIVIDADE •
-          SUSTENTABILIDADE • ESCALABILIDADE • FLEXIBILIDADE • ADAPTABILIDADE •
-          RESILIÊNCIA • AGILIDADE • VELOCIDADE • PRECISÃO • EFETIVIDADE •
-          PERFORMANCE • PRODUTIVIDADE • QUALIDADE • EXCELÊNCIA • SUPERAÇÃO •
-          CONQUISTA • VITÓRIA • LIDERANÇA • PROTAGONISMO • 🎉 REVOLUCIONE SEU
-          NEGÓCIO • TRANSFORME DADOS EM INSIGHTS • LIDERE O FUTURO • SEJA
-          VISIONÁRIO • TECNOLOGIA AVANÇADA • CRESCIMENTO EXPONENCIAL • SUCESSO
-          GARANTIDO • INOVAÇÃO CONSTANTE • ESTRATÉGIAS INTELIGENTES • RESULTADOS
-          EXTRAORDINÁRIOS • COMPETITIVIDADE • DIFERENCIAÇÃO • POSICIONAMENTO •
-          MARKET SHARE • LUCRATIVIDADE • SUSTENTABILIDADE • ESCALABILIDADE •
-          FLEXIBILIDADE • ADAPTABILIDADE • RESILIÊNCIA • AGILIDADE • VELOCIDADE
-          • PRECISÃO • EFETIVIDADE • PERFORMANCE • PRODUTIVIDADE • QUALIDADE •
-          EXCELÊNCIA • SUPERAÇÃO • CONQUISTA • VITÓRIA • LIDERANÇA •
-          PROTAGONISMO • 🎉 REVOLUCIONE SEU NEGÓCIO • TRANSFORME DADOS EM
-          INSIGHTS • LIDERE O FUTURO • SEJA VISIONÁRIO • TECNOLOGIA AVANÇADA •
-          CRESCIMENTO EXPONENCIAL • SUCESSO GARANTIDO • INOVAÇÃO CONSTANTE •
-          ESTRATÉGIAS INTELIGENTES • RESULTADOS EXTRAORDINÁRIOS •</span
+          >🎉 REVOLUTIONIZE YOUR BUSINESS • TRANSFORM DATA INTO INSIGHTS • LEAD
+          THE FUTURE • BE VISIONARY • ADVANCED TECHNOLOGY • EXPONENTIAL GROWTH •
+          GUARANTEED SUCCESS • CONSTANT INNOVATION • INTELLIGENT STRATEGIES •
+          EXTRAORDINARY RESULTS • COMPETITIVENESS • DIFFERENTIATION •
+          POSITIONING • MARKET SHARE • PROFITABILITY • SUSTAINABILITY •
+          SCALABILITY • FLEXIBILITY • ADAPTABILITY • RESILIENCE • AGILITY •
+          SPEED • PRECISION • EFFECTIVENESS • PERFORMANCE • PRODUCTIVITY •
+          QUALITY • EXCELLENCE • OVERCOMING • CONQUEST • VICTORY • LEADERSHIP •
+          PROTAGONISM • 🎉 REVOLUTIONIZE YOUR BUSINESS • TRANSFORM DATA INTO
+          INSIGHTS • LEAD THE FUTURE • BE VISIONARY • ADVANCED TECHNOLOGY •
+          EXPONENTIAL GROWTH • GUARANTEED SUCCESS • CONSTANT INNOVATION •
+          INTELLIGENT STRATEGIES • EXTRAORDINARY RESULTS • COMPETITIVENESS •
+          DIFFERENTIATION • POSITIONING • MARKET SHARE • PROFITABILITY •
+          SUSTAINABILITY • SCALABILITY • FLEXIBILITY • ADAPTABILITY • RESILIENCE
+          • AGILITY • SPEED • PRECISION • EFFECTIVENESS • PERFORMANCE •
+          PRODUCTIVITY • QUALITY • EXCELLENCE • OVERCOMING • CONQUEST • VICTORY
+          • LEADERSHIP • PROTAGONISM • 🎉 REVOLUTIONIZE YOUR BUSINESS •
+          TRANSFORM DATA INTO INSIGHTS • LEAD THE FUTURE • BE VISIONARY •
+          ADVANCED TECHNOLOGY • EXPONENTIAL GROWTH • GUARANTEED SUCCESS •
+          CONSTANT INNOVATION • INTELLIGENT STRATEGIES • EXTRAORDINARY RESULTS
+          •</span
         >
       </div>
     </div>
@@ -1003,8 +1199,10 @@
     <footer id="contact">
       <div class="footer-content">
         <div class="footer-logo">FutureSync</div>
-        <p>Transformando dados em insights, moldando o futuro do consumo.</p>
-        <p>&copy; 2025 FutureSync. Todos os direitos reservados.</p>
+        <p>
+          Transforming data into insights, shaping the future of consumption.
+        </p>
+        <p>&copy; 2025 FutureSync. All rights reserved.</p>
       </div>
     </footer>
 
@@ -1103,13 +1301,6 @@
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
         renderer.setSize(window.innerWidth, window.innerHeight);
-      });
-
-      // Initialize Marquee3000
-      document.addEventListener("DOMContentLoaded", function () {
-        Marquee3k.init({
-          selector: ".marquee",
-        });
       });
 
       // Scroll animations
